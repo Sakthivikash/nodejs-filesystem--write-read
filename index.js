@@ -18,6 +18,7 @@ app.get("/write", (req, res) => {
     date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
   const cont = `${year}${month}${today}-${hours}${minutes}${seconds}`;
   let dateNow = `${Date.now()}`;
+  console.log(cont);
   const content = `Created the file ${cont}.txt`;
   fs.writeFile(`./backup/${cont}.txt`, dateNow, (err) => {
     fs.appendFile(
@@ -26,6 +27,7 @@ app.get("/write", (req, res) => {
       (err) => console.log(err)
     );
     console.log("Completed writing !!! 👍");
+    console.log(content);
     res.send(content);
   });
 });
