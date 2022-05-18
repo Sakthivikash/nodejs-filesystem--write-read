@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 app.get("/write", (req, res) => {
   let date = new Date();
@@ -36,6 +39,7 @@ app.get("/read", async (req, res) => {
   });
 });
 
-app.listen(5000, () => {
-  console.log("Server is running on 5000");
+const port = process.env.PORT;
+app.listen(port, () => {
+  console.log(`Server is running on ${port}`);
 });
